@@ -1,6 +1,9 @@
 ---@diagnostic disable: undefined-global
 ---@diagnostic disable: deprecated
 
+-- TODO
+-- Added Access to Plugins.
+
 function Parent(GUI)
     if syn and syn.protect_gui then
         syn.protect_gui(GUI)
