@@ -2,7 +2,6 @@
 
 ![Image Of Turtle Notifications](https://i.gyazo.com/3d63118f4f8f44106add2d7ef12cef85.png)
 
-
 A Notification and Popup library made in the style of Turtle Spy!
 
 If you find any bugs or want to make a suggestions, Make a issue on github ❤️
@@ -14,6 +13,10 @@ If you find any bugs or want to make a suggestions, Make a issue on github ❤�
 * Popups.
 * Popups On The Mouse.
 
+## Notes
+
+* To close a popup without pressing anything press Left-Alt
+
 ## API
 
 Initiate The Library:
@@ -22,7 +25,7 @@ Initiate The Library:
 local TurtleNotifications = loadstring(game:HttpGet("raw.githubusercontent.com/Turtle-Brand/Turtle-Notifications/main/source.lua"))()
 
 -- Args
--- 1: DestroyOld: If the library already has a exsisting instance then it will destroy the old Gui and Make a new one.
+-- 1: DestroyOld: If the library already has a exsisting instance then it will destroy the old Gui and Make a new one. If false then will return the old instance (if it exsists)
 
 -- 2: TimeBetweenNotifications: The Time Between Notifications
 
@@ -86,6 +89,15 @@ NotificationLibrary:Popup(UDim2.new(0.5, 0, 0.5, 0), {{
 }})
 ```
 
+Set Notification Delay.
+
+```lua
+-- Args
+-- 1: Delay: The Delay Between Queued Notifications
+
+NotificationLibrary:SetNotificationDelay(5)
+```
+
 Make A Popup On The Mouse.
 
 ```lua
@@ -110,4 +122,4 @@ NotificationLibrary:PopupAtMouse({{
 }})
 ```
 
-## Made with ❤️ by Littlepriceonu#0001
+<h2 align="center">Made With ❤️ Littlepriceonu#0001</h2>

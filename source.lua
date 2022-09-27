@@ -1,8 +1,5 @@
-local Players = game:GetService("Players")
+---@diagnostic disable: undefined-global
 ---@diagnostic disable: deprecated
--- Todo
--- Queue Notifications
--- Actual Gui Handle
 
 function Parent(GUI)
     if syn and syn.protect_gui then
@@ -31,8 +28,7 @@ function CreateGuis()
     --Properties:
 
     TurtleNotifications.Name = "TurtleNotifications"
-    TurtleNotifications.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-    TurtleNotifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    TurtleNotifications.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
     Notification.Name = "Notification"
     Notification.Parent = TurtleNotifications
