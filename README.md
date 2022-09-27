@@ -1,12 +1,11 @@
+<h1 align="center">Turtle-Notifications</h1>
 
-# Turtle-Notifications
-    
 ![Image Of Turtle Notifications](https://i.gyazo.com/3d63118f4f8f44106add2d7ef12cef85.png)
+
 
 A Notification and Popup library made in the style of Turtle Spy!
 
 If you find any bugs or want to make a suggestions, Make a issue on github ❤️
-
 
 ## Features
 
