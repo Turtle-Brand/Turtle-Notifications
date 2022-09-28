@@ -63,6 +63,10 @@ NotificationLibrary:QueueNotification(5, "Test Title", "Example Text!", "Ok", {O
 end})
 ```
 
+Notification Design If Type Is "Ok".
+
+![Turtle Notification with the Type "Ok"](https://gyazo.com/0a274957d722e9ba6e74d5e60e277e9f.png)
+
 Make A Popup.
 
 ```lua
@@ -123,3 +127,4 @@ NotificationLibrary:PopupAtMouse({{
 ```
 
 <h2 align="center">Made With ❤️ Littlepriceonu#0001</h2>
+<h3 align="center">With Emotional Support From Intrer#0421</h3>
