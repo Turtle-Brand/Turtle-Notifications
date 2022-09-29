@@ -1,6 +1,9 @@
 # Compiled Lua sources
 luac.out
 
+# Plugin Tests
+TestPlugins
+
 # Test Files
 *.test.lua
 

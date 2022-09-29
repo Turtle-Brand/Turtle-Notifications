@@ -18,6 +18,7 @@ If you find any bugs or want to make a suggestions, Make a issue on github ‚ù§Ô∏
 
 * To close a popup without pressing anything press Left-Alt
 * I might make a cool little plugin or something that automatically tells the user the thing above
+* I actually made a plugin called "Warn" that does the above, see Warn.lua in Plugins/
 
 ## API
 
