@@ -32,7 +32,7 @@ function CreateGuis()
     --Properties:
 
     TurtleNotifications.Name = "TurtleNotifications"
-    TurtleNotifications.ZIndexBehavior = Enum.ZIndexBehavior.Global
+    TurtleNotifications.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     Notification.Name = "Notification"
     Notification.Parent = TurtleNotifications
@@ -159,6 +159,11 @@ function TurtleNotifications.new(DeleteOld, DelayBetweenNotifications)
 
     nt.DelayBetweenNotifications = DelayBetweenNotifications
     nt.Notifications = {}
+
+    nt.PluginUtils = {}
+
+    nt.PluginUtils.OnNotification = Instance.new("BindableEvent")
+
     nt:Init()
 
     _G.TurtleNotificationsLoaded = true
@@ -171,6 +176,7 @@ function TurtleNotifications:Init()
     self.Gui = CreateGuis()
     self.Notification = self.Gui.Notification
     self.PopupFrame = self.Gui.Popup
+    self.LoadedPlugins = {}
 
     self:StartNotificationLoop()
 
@@ -183,11 +189,20 @@ function TurtleNotifications:Init()
     end)
 end
 
+function TurtleNotifications:LoadPlugin(loadstr)
+    local new, Name = loadstring(loadstr)().new(self, #self.LoadedPlugins+1)
+
+    table.insert(self.LoadedPlugins, {
+        Name = Name,
+        Module = new
+    })
+end
+
 function TurtleNotifications:SetNotificationDelay(delay)
     self.DelayBetweenNotifications = delay
 end
 
--- The _ Is intentional. This should not be accessed by a normal script unless its a plugin of sorts
+-- The _ Is intentional. This should not be accessed by a normal script unless its a plugin.
 function TurtleNotifications:_Notification(data)
     self.Notification.Position = data.Positions.Start
     self.Notification.Title.Text = data.TitleText
@@ -206,6 +221,7 @@ function TurtleNotifications:_Notification(data)
             true
         )
         wait(0.5)
+
         self.Notification.Visible = false
     end
 
@@ -291,8 +307,10 @@ function TurtleNotifications:_Notification(data)
         end)
     end
 
-    DoStartTween()
+    self.PluginUtils.OnNotification:Fire(data)
 
+    DoStartTween()
+    
     repeat
         wait()
     until Done
