@@ -139,5 +139,5 @@ Also feel free to make a pull request exapanding the PluginUtils table in the Tu
 
 * There aren't any documented plugins as of right now. If I don't see your plugin and add it and you would like it here, message me on on discord (littlepriceonu#0001)
 
-<h2 align="center">Made With ❤️ Littlepriceonu#0001</h2>
+<h2 align="center">Made With ❤️ By Littlepriceonu#0001</h2>
 <h3 align="center">With Emotional Support From Intrer#0421</h3>
