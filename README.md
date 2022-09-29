@@ -71,6 +71,9 @@ Notification Design If Type Is "Ok".
 ![Turtle Notification with the Type "Ok"](https://gyazo.com/0a274957d722e9ba6e74d5e60e277e9f.png)
 
 Make A Popup.
+One cool thing you can do with this is instead of using :PopupOnMouse to have it on the mouse,
+You can have it popup on the Gui button the user pressed itself, maybe making it centered or something like that.
+It just allows more design choices
 
 ```lua
 -- Args:
