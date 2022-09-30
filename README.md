@@ -133,8 +133,10 @@ NotificationLibrary:PopupAtMouse({{
 
 If you would like to make a plugin check out [pluginexample.lua](https://github.com/Turtle-Brand/Turtle-Notifications/blob/main/pluginexample.lua) in the repo.
 Also feel free to make a pull request exapanding the PluginUtils table in the TurtleNotifications.new() which is basically the Plugin API.
+If I don't see your plugin and add it and you would like it here, message me on on discord (littlepriceonu#0001)
+Documented Plugins:
 
-* There aren't any documented plugins as of right now. If I don't see your plugin and add it and you would like it here, message me on on discord (littlepriceonu#0001)
+* Warn, A plugin for telling the user about the Left Alt to close plugin thing.
 
 <h2 align="center">Made With ❤️ Littlepriceonu#0001</h2>
 <h3 align="center">With Emotional Support From Intrer#0421</h3>
