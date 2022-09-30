@@ -71,6 +71,9 @@ Notification Design If Type Is "Ok".
 ![Turtle Notification with the Type "Ok"](https://gyazo.com/0a274957d722e9ba6e74d5e60e277e9f.png)
 
 Make A Popup.
+One cool thing you can do with this is instead of using :PopupOnMouse to have it on the mouse,
+You can have it popup on the Gui button the user pressed itself, maybe making it centered or something like that.
+It just allows more design choices
 
 ```lua
 -- Args:
@@ -138,5 +141,5 @@ Documented Plugins:
 
 * Warn, A plugin for telling the user about the Left Alt to close plugin thing.
 
-<h2 align="center">Made With ❤️ Littlepriceonu#0001</h2>
+<h2 align="center">Made With ❤️ By Littlepriceonu#0001</h2>
 <h3 align="center">With Emotional Support From Intrer#0421</h3>
