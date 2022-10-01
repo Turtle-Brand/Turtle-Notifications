@@ -206,6 +206,8 @@ function TurtleNotifications:LoadPlugin(loadstr)
         Name = Name,
         Module = new
     })
+
+    return new
 end
 
 function TurtleNotifications:SetNotificationDelay(delay)

@@ -12,14 +12,16 @@ function Warn.new(NotificationLibrary, index)
     newtable.NotificationLibrary = NotificationLibrary
 
     spawn(function()
-        newtable:Init()
+        repeat wait() until NotificationLibrary.LoadedPlugins[index] ~= nil
+
+        newtable:_Init()
     end)
 
     return newtable, ActualPluginName
 end
 
 
-function Warn:Init()
+function Warn:_Init()
     self.NotificationLibrary:QueueNotification(5, "About Popups", "When you want to close a popup without having to press a button, just press left alt!", "Ok", {Ok = function()end})
 end
 

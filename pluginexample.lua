@@ -20,14 +20,14 @@ function PluginName.new(NotificationLibrary, index)
     spawn(function()
         --  Wait For Our Plugin To Be Loaded Before We Inititate It.
         repeat wait() until NotificationLibrary.LoadedPlugins[index] ~= nil
-        newtable:Init()
+        newtable:_Init()
     end)
 
     return newtable, ActualPluginName
 end
 
-
-function PluginName:Init()
+-- ! Functions you DONT want a user to be able to call you should add a _ to the start of the function name
+function PluginName:_Init()
     -- One Cool Thing You Can Do Is Add Data To The LoadedPlugins Table In The NotificationLibrary Using self.index, This Lets Other Plugins See Data From Your Plugin Without Accesing the Module Manually.
     -- ! This can ONLY be done in the :Init() Function or another functions called in Init(). Trying to edit this in .new() will cause an error
     -- I.E.
@@ -35,8 +35,8 @@ function PluginName:Init()
 
     print("Hello From Init!")
     self:HelloWorld()
-    self:HookNotification()
-    self:AddFilters()
+    self:_HookNotification()
+    self:_AddFilters()
 end
 
 function PluginName:HelloWorld()
@@ -45,7 +45,7 @@ function PluginName:HelloWorld()
 end
 
 -- A filter is something that the data of a notifcation/popup gets ran through before actually being processed by Turtle Notifications.
-function PluginName:AddFilters()
+function PluginName:_AddFilters()
     -- There are two types of Filter, "Notification" and "Popup"
     self.NotificationLibrary:AddFilter(function(data)
         -- Change the original Title of the Notification to be "Changed By Filter!"
@@ -66,7 +66,7 @@ function PluginName:AddFilters()
     --  Text = "Btn Text",
     --  Callback = function(),
     --}}
-    self.NotificationLibrary:AddFilter(function(data)
+    self.NotificationLibrary:_AddFilter(function(data)
         table.insert(data.Buttons, {
             Text = "FilterBtn",
             Callback = function()
