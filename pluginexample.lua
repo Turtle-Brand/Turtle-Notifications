@@ -67,8 +67,6 @@ function PluginName:AddFilters()
     --  Callback = function(),
     --}}
     self.NotificationLibrary:AddFilter(function(data)
-        print(#data.Buttons)
-
         table.insert(data.Buttons, {
             Text = "FilterBtn",
             Callback = function()
