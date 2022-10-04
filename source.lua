@@ -2,7 +2,7 @@
 ---@diagnostic disable: deprecated
 
 -- TODO
--- Added OnNotificationQueued to plugin api.
+-- Add OnNotificationQueued to plugin api.
 
 function Parent(GUI)
     if syn and syn.protect_gui then
