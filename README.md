@@ -35,6 +35,20 @@ local TurtleNotifications = loadstring(game:HttpGet("raw.githubusercontent.com/T
 local NotificationLibrary = TurtleNotifications.new(false, 2)
 ```
 
+Load A Plugin.
+
+```lua
+-- Args:
+--  1: URL: URL of the plugins code i.e. "raw.githubusercontent.com/Turtle-Brand/Turtle-Notifications/main/pluginexample.lua"
+
+
+-- Load the example plugin from the Turtle Notifications repo
+local Plugin = NotificationLibrary:LoadPlugin("raw.githubusercontent.com/Turtle-Brand/Turtle-Notifications/main/pluginexample.lua")
+
+-- Call one of the plugins functions. Dont call a plugin function if it starts with and _ Because that means its a plugins internal function (You can call it if you know what you're doing, of course)
+Plugin:HelloWorld()
+```
+
 Queue Up A Notification.
 
 ```lua
@@ -43,7 +57,7 @@ Queue Up A Notification.
 
 --  2: Title: Title of the Notification
 
---  3: Description: Description of the Notification
+--  3: Description: Description of the Notification (Description just being a the text under the title)
 
 --  4: Type: Type of Notification. The only two type as of now is "Cancel-Continue" and "Ok" these pick which buttons apear, If it is Ok then the Ok Button will be visible. If  Cancel-Continue then the Cancel and Continue buttons will be visible.
 
@@ -136,8 +150,10 @@ NotificationLibrary:PopupAtMouse({{
 
 If you would like to make a plugin check out [pluginexample.lua](https://github.com/Turtle-Brand/Turtle-Notifications/blob/main/pluginexample.lua) in the repo.
 Also feel free to make a pull request exapanding the PluginUtils table in the TurtleNotifications.new() which is basically the Plugin API.
+If I don't see your plugin and add it and you would like it here, message me on on discord (littlepriceonu#0001)
+Documented Plugins:
 
-* There aren't any documented plugins as of right now. If I don't see your plugin and add it and you would like it here, message me on on discord (littlepriceonu#0001)
+* Warn, A plugin for telling the user about the Left Alt to close plugin thing.
 
 <h2 align="center">Made With ❤️ By Littlepriceonu#0001</h2>
 <h3 align="center">With Emotional Support From Intrer#0421</h3>

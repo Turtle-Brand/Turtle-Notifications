@@ -160,6 +160,10 @@ function TurtleNotifications.new(DeleteOld, DelayBetweenNotifications)
     nt.Notifications = {}
 
     nt.PluginUtils = {}
+    nt.LoadedPlugins = {}
+
+    nt.NotificationFilters = {}
+    nt.PopupFilters = {}
 
     nt.PluginUtils.OnNotification = Instance.new("BindableEvent")
 
@@ -171,11 +175,18 @@ function TurtleNotifications.new(DeleteOld, DelayBetweenNotifications)
     return nt
 end
 
+function TurtleNotifications:AddFilter(filter, Type)
+    if Type == "Notification" then
+        table.insert(self.NotificationFilters, filter)
+    elseif Type == "Popup" then
+        table.insert(self.PopupFilters, filter)
+    end
+end
+
 function TurtleNotifications:Init()
     self.Gui = CreateGuis()
     self.Notification = self.Gui.Notification
     self.PopupFrame = self.Gui.Popup
-    self.LoadedPlugins = {}
 
     self:StartNotificationLoop()
 
@@ -195,6 +206,8 @@ function TurtleNotifications:LoadPlugin(loadstr)
         Name = Name,
         Module = new
     })
+
+    return new
 end
 
 function TurtleNotifications:SetNotificationDelay(delay)
@@ -203,6 +216,10 @@ end
 
 -- The _ Is intentional. This should not be accessed by a normal script unless its a plugin.
 function TurtleNotifications:_Notification(data)
+    for _,v in ipairs(self.NotificationFilters) do
+        data = v(data)
+    end
+
     self.Notification.Position = data.Positions.Start
     self.Notification.Title.Text = data.TitleText
     self.Notification.Data.Text = data.Description
@@ -309,7 +326,7 @@ function TurtleNotifications:_Notification(data)
     self.PluginUtils.OnNotification:Fire(data)
 
     DoStartTween()
-    
+
     repeat
         wait()
     until Done
@@ -370,7 +387,19 @@ end
 --  Callback = function(),
 --}}
 
-function TurtleNotifications:Popup(Position, Buttons)
+function TurtleNotifications:Popup(Position, ButtonsData)
+    -- Have to clone the table because of some fucky lua shit.
+    local Buttons = table.clone(ButtonsData)
+
+    local data = {Buttons=Buttons, Position=Position}
+
+    for _,v in ipairs(self.PopupFilters) do
+        data = v(data)
+    end
+
+    Position = data.Position
+    Buttons = data.Buttons
+
     local frame = self.PopupFrame.PopupScroll
 
     for _,button in ipairs(frame:GetChildren()) do
