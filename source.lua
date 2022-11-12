@@ -188,10 +188,12 @@ function TurtleNotifications:Init()
     self.Notification = self.Gui.Notification
     self.PopupFrame = self.Gui.Popup
 
-    self:StartNotificationLoop()
+    self:_StartNotificationLoop()
 
     game:GetService("UserInputService").InputBegan:Connect(function(input, gameProcessedEvent)
-        if input.KeyCode == Enum.KeyCode.LeftAlt then
+        if gameProcessedEvent then return end
+
+        if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.MouseButton2 then
             if self.PopupFrame.Visible then
                 self.PopupFrame.Visible = false
             end
@@ -216,6 +218,8 @@ end
 
 -- The _ Is intentional. This should not be accessed by a normal script unless its a plugin.
 function TurtleNotifications:_Notification(data)
+    data.OnStart:Fire()
+
     for _,v in ipairs(self.NotificationFilters) do
         data = v(data)
     end
@@ -239,6 +243,8 @@ function TurtleNotifications:_Notification(data)
         wait(0.5)
 
         self.Notification.Visible = false
+
+        data.OnFinish:Fire()
     end
 
     function DoStartTween()
@@ -332,7 +338,8 @@ function TurtleNotifications:_Notification(data)
     until Done
 end
 
-function TurtleNotifications:StartNotificationLoop()
+-- The _ Is intentional. This should not be accessed by a normal script unless its a plugin.
+function TurtleNotifications:_StartNotificationLoop()
     spawn(function()
         while wait() do
             if #self.Notifications > 0 then
@@ -372,14 +379,21 @@ function TurtleNotifications:QueueNotification(WaitTime, TitleText, Description,
         End = UDim2.new(0.75, 0, 0.78, 0)
     }
 
+    local OnFinish = Instance.new("BindableEvent")
+    local OnStart = Instance.new("BindableEvent")
+
     table.insert(self.Notifications, {
         WaitTime = WaitTime,
         TitleText = TitleText,
         Description = Description,
         Type = Type,
         Callbacks = Callbacks,
+        OnStart = OnStart,
+        OnFinish = OnFinish,
         Positions = optional[1] or Positions,
     })
+
+    return OnStart, OnFinish
 end
 
 --Buttons = {{

@@ -12,13 +12,6 @@ If you find any bugs or want to make a suggestions, Make a issue on github ❤�
 * Notifications (duh)
 * Notification "Queueing" So the user doesn't get bombarded with Notifications.
 * Popups.
-* Popups On The Mouse.
-
-## Notes
-
-* To close a popup without pressing anything press Left-Alt
-* I might make a cool little plugin or something that automatically tells the user the thing above
-* I actually made a plugin called "Warn" that does the above, see Warn.lua in Plugins/
 
 ## API
 
@@ -45,7 +38,7 @@ Load A Plugin.
 -- Load the example plugin from the Turtle Notifications repo
 local Plugin = NotificationLibrary:LoadPlugin("raw.githubusercontent.com/Turtle-Brand/Turtle-Notifications/main/pluginexample.lua")
 
--- Call one of the plugins functions. Dont call a plugin function if it starts with and _ Because that means its a plugins internal function (You can call it if you know what you're doing, of course)
+-- Chen you call one of the plugins functions. Dont call a plugin function if it starts with and _ because that means its a plugins internal function (You can call it if you know what you're doing, of course)
 Plugin:HelloWorld()
 ```
 
@@ -75,6 +68,9 @@ Queue Up A Notification.
 --    End = UDim2.new(0.7, 0, 0.8, 0)
 --} This will make the Notification goto the End and then Tween To The Start and then Tween To The End. So the end should be off screen, and the Start should be where you want the user to look to see the Notification
 
+
+-- Returns 2 bindable events one that gets fired when the notification starts and one that gets fired when the notification is finished (its duration passed or a user interacted)
+
 NotificationLibrary:QueueNotification(5, "Test Title", "Example Text!", "Ok", {Ok = function() 
     print("Ok Pressed!")
 end})
@@ -85,7 +81,8 @@ Notification Design If Type Is "Ok".
 ![Turtle Notification with the Type "Ok"](https://gyazo.com/0a274957d722e9ba6e74d5e60e277e9f.png)
 
 Make A Popup.
-One cool thing you can do with this is instead of using :PopupOnMouse to have it on the mouse,
+
+*One cool thing you can do with this is instead of using :PopupOnMouse to have it on the mouse,
 You can have it popup on the Gui button the user pressed itself, maybe making it centered or something like that.
 It just allows more design choices
 
@@ -153,7 +150,7 @@ Also feel free to make a pull request exapanding the PluginUtils table in the Tu
 If I don't see your plugin and add it and you would like it here, message me on on discord (littlepriceonu#0001)
 Documented Plugins:
 
-* Warn, A plugin for telling the user about the Left Alt to close plugin thing.
+* Warn, A plugin by me that lets you use the :Warn function to make the description of that notification red. read Warn.md in the Plugins/Warn folder in the repo
 
 <h2 align="center">Made With ❤️ By Littlepriceonu#0001</h2>
 <h3 align="center">With Emotional Support From Intrer#0421</h3>
