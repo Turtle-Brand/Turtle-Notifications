@@ -102,6 +102,8 @@ It just allows more design choices
 --      end
 --  }} 
 
+-- returns a bindable event that fires when the popup is clicked off, a button is pressed or another popup overrides it.
+
 NotificationLibrary:Popup(UDim2.new(0.5, 0, 0.5, 0), {{
     Text = "Test Button",
     Callback = function()
@@ -134,6 +136,8 @@ Make A Popup On The Mouse.
 --            print("Example 2 Pressed")
 --      end
 --  }} 
+
+-- returns a bindable event that fires when the popup is clicked off, a button is pressed or another popup overrides it.
 
 NotificationLibrary:PopupAtMouse({{
     Text = "Test Button",

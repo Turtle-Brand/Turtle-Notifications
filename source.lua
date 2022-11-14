@@ -156,6 +156,7 @@ function TurtleNotifications.new(DeleteOld, DelayBetweenNotifications)
 
     local nt = setmetatable({}, TurtleNotifications)
 
+    nt.PopupEndedEvent = nil
     nt.DelayBetweenNotifications = DelayBetweenNotifications
     nt.Notifications = {}
 
@@ -196,6 +197,10 @@ function TurtleNotifications:Init()
         if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.MouseButton2 then
             if self.PopupFrame.Visible then
                 self.PopupFrame.Visible = false
+                if self.PopupEndedEvent ~= nil then
+                    self.PopupEndedEvent:Fire()
+                    self.PopupEndedEvent = nil
+                end
             end
         end
     end)
@@ -402,6 +407,12 @@ end
 --}}
 
 function TurtleNotifications:Popup(Position, ButtonsData)
+    if self.PopupEndedEvent ~= nil then
+        self.PopupEndedEvent:Fire()
+        self.PopupEndedEvent = Instance.new("BindableEvent")
+    else
+        self.PopupEndedEvent = Instance.new("BindableEvent")
+    end
     -- Have to clone the table because of some fucky lua shit.
     local Buttons = table.clone(ButtonsData)
 
@@ -442,16 +453,19 @@ function TurtleNotifications:Popup(Position, ButtonsData)
 
             for _,button in ipairs(buttons) do
                 button:Destroy()
+                self.PopupEndedEvent:Fire()
             end
         end)
     end
 
     self.PopupFrame.Visible = true
+
+    return self.PopupEndedEvent
 end
 
 function TurtleNotifications:PopupAtMouse(Buttons)
     local m = game.Players.LocalPlayer:GetMouse()
-    self:Popup(UDim2.new(0,m.X, 0, m.Y), Buttons)
+    return self:Popup(UDim2.new(0,m.X, 0, m.Y), Buttons)
 end
 
 return TurtleNotifications
