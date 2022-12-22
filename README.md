@@ -38,7 +38,7 @@ Load A Plugin.
 -- Load the example plugin from the Turtle Notifications repo
 local Plugin = NotificationLibrary:LoadPlugin("raw.githubusercontent.com/Turtle-Brand/Turtle-Notifications/main/pluginexample.lua")
 
--- Chen you call one of the plugins functions. Dont call a plugin function if it starts with and _ because that means its a plugins internal function (You can call it if you know what you're doing, of course)
+-- Then you call one of the plugins functions. Dont call a plugin function if it starts with and _ because that means its a plugins internal function (You can call it if you know what you're doing, of course)
 Plugin:HelloWorld()
 ```
 
